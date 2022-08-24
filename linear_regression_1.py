@@ -10,6 +10,7 @@ from sklearn import datasets
 FILE_PATH = 'all_perth_310121.csv'
 raw = pd.read_csv(FILE_PATH)
 n_raw = raw.dropna()  # data set which drops rows with n/a values
+raw_dropped = n_raw.drop(['CBD_DIST', 'NEAREST_STN', 'NEAREST_STN_DIST', 'LATITUDE', 'LONGITUDE', 'POSTCODE', 'NEAREST_SCH', 'NEAREST_SCH_DIST'], axis=1)
 
 
 def correlation(data_file):
@@ -29,5 +30,6 @@ def price_bathrooms(data_file):
     return plt.show()
 
 
-test = price_floor_area(n_raw)
-print(test)
+correlate = correlation(raw_dropped)
+print(correlate)
+print(raw_dropped)
