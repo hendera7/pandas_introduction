@@ -90,7 +90,6 @@ def price_school_rank(data_file):
     return plt.figure()
 
 
-
 empty_plot = plt.figure()
 plot_list = [empty_plot, price_floor_area(n_raw), price_bedrooms(n_raw), price_bathrooms(n_raw), price_build_year(n_raw), price_school_rank(n_raw)]
 # NO IDEA WHY, but the savefig() method below will not put in the first figure regardless of what it is, so I added an empty_plot as first in the list
