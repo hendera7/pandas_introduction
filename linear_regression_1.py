@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 from sklearn import linear_model
-# from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression
 from sklearn import datasets
 
 
@@ -19,42 +19,65 @@ def correlation(data_file):
     return
 
 def price_floor_area(data_file):
-    data_file.plot(kind = 'scatter', x = 'FLOOR_AREA', y = 'PRICE')
-    return plt.show()
+    x = data_file["FLOOR_AREA"].values.reshape(-1,1)
+    y = data_file["PRICE"].values.reshape(-1,1)
+    linear_regressor = LinearRegression()
+    linear_regressor.fit(x, y)
+    y_pred = linear_regressor.predict(x)
+
+    plt.scatter(x,y)
+    plt.plot(x, y_pred, color='red')
+    plt.show()
+
+    return 
 
 def price_bedrooms(data_file):
-    data_file(kind = 'scatter', x = 'BEDROOMS', y = 'PRICE')
-    return plt.show()
+    x = data_file["BEDROOMS"].values.reshape(-1,1)
+    y = data_file["PRICE"].values.reshape(-1,1)
+    linear_regressor = LinearRegression()
+    linear_regressor.fit(x, y)
+    y_pred = linear_regressor.predict(x)
+
+    plt.scatter(x,y)
+    plt.plot(x, y_pred, color='red')
+    plt.show()
+
+    return 
 
 def price_bathrooms(data_file):
-    # data_file(kind = 'scatter', x = 'BATHROOMS', y = 'PRICE')
-    fig = data_file.plot(kind = 'scatter', x = 'BATHROOMS', y = 'PRICE')
-    return fig
-    # return plt.show()
+    x = data_file["BATHROOMS"].values.reshape(-1,1)
+    y = data_file["PRICE"].values.reshape(-1,1)
+    linear_regressor = LinearRegression()
+    linear_regressor.fit(x, y)
+    y_pred = linear_regressor.predict(x)
+
+    plt.scatter(x,y)
+    plt.plot(x, y_pred, color='red')
+    plt.show()
+
+    return 
 
 def price_build_year(data_file):
-    # data_file(kind = 'scatter', x = 'BUILD_YEAR', y = 'PRICE')
-    fig = data_file.plot(kind = 'scatter', x = 'BUILD_YEAR', y = 'PRICE')
-    return fig
-    # return plt.show()
+    x = data_file["BUILD_YEAR"].values.reshape(-1,1)
+    y = data_file["PRICE"].values.reshape(-1,1)
+    linear_regressor = LinearRegression()
+    linear_regressor.fit(x, y)
+    y_pred = linear_regressor.predict(x)
 
-def price_build_year_1 (data_file):
-    data_file.plot(kind = 'scatter', x = 'BUILD_YEAR', y = 'PRICE')
-    # fig = data_file.plot(kind = 'scatter', x = 'BUILD_YEAR', y = 'PRICE')
-    return plt.show()
-
-
-def plot(data_frame_1, data_frame_2):
-    figure, axes = plt.subplots(nrows = 2, ncols = 2)
-    data_frame_1.plot(ax=axes[0,0])
-    data_frame_2.plot(ax=axes[0,1])
+    plt.scatter(x,y)
+    plt.plot(x, y_pred, color='red')
     plt.show()
+
+    return 
+
 
 
 correlate = correlation(raw_dropped)
-print(correlate)
+# print(correlate)
 # print(raw_dropped)
-
-price_build_year_1(raw_dropped)
-
+# price_build_year_1(raw_dropped)
 # plot(price_bathrooms(raw_dropped), price_build_year(raw_dropped))
+
+print(price_bedrooms(n_raw))
+print(price_floor_area(n_raw))
+
